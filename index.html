@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наркологическая клиника Шанс</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Наркологическая клиника Шанс</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+        <button class="contact-button" onclick="sendEmail()">Написать</button>
+        <p>Получите профессиональную помощь прямо сейчас!</p>
+    </header>
+    <main>
+        <section id="about">
+            <h2>О нас</h2>
+            <p>Добро пожаловать в нашу наркологическую клинику. Мы предлагаем профессиональную помощь в лечении зависимостей.</p>
+        </section>
+        <section id="services">
+            <h2>Услуги</h2>
+            <ul>
+                <li>Консультации</li>
+                <li>Детоксикация</li>
+                <li>Реабилитация</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Адрес: ул. Примерная, д. 1, г. Москва</p>
+            <p>Телефон: +7 (123) 456-78-90</p>
+            <p>Email: info@shansclinic.ru</p>
+        </section>
+    </footer>
+    <script>
+        function sendEmail() {
+            fetch('sendmail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'email': 'info@shansclinic.ru',
+                    'message': 'Получите профессиональную помощь прямо сейчас!'
+                })
+            })
+            .then(response => response.text())
+            .then(result => alert(result))
+            .catch(error => alert('Ошибка при отправке сообщения.'));
+        }
+    </script>
+</body>
+</html>
