@@ -1,13 +1,842 @@
-.contact-button {
-    background-color: #4cafaf;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 5px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Обеспечиваем правильное поведение для всех элементов */
 }
 
-.contact-button:hover {
-    background-color: #42959b;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    /* Убираем отступы у body */
+    padding: 0;
+    /* Убираем внутренние отступы у body */
+}
+
+/* Контейнер header */
+.h-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /* Добавляем отступы по бокам */
+}
+
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.header .logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1db49a;
+}
+
+.header-buttons .btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    gap: 10px;
+    background-color: #1db49a;
+    border: thin solid #000;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    /* Добавлена анимация пульсации */
+}
+
+.header-buttons .btn:hover {
+    background-color: #148874;
+}
+
+/* Ключевые кадры для анимации пульсации */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(29, 180, 154, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px 10px rgba(29, 180, 154, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(29, 180, 154, 0);
+    }
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+
+    .header-contact {
+        align-items: flex-start;
+    }
+
+    .header-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-buttons .btn {
+        margin-left: 0;
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .header .logo {
+        font-size: 20px;
+    }
+
+    .header-buttons .btn {
+        padding: 10px 20px;
+        gap: 20px;
+    }
+}
+
+/* NavMenu */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    /* фон */
+    backdrop-filter: blur(10px);
+    /* Размытие фона за меню */
+    z-index: 10;
+    /* Размещаем меню поверх других элементов */
+    transition: background-color 0.3s ease;
+    /* Плавное изменение фона */
+}
+
+.menu.scrolled {
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Меняем фон на полупрозрачный при прокрутке */
+}
+
+/* Меню */
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    /* border: thin solid #000;  /* Обводка вокруг меню */
+    border-radius: 0px 0px 10px 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Тень вниз */
+    transition: background-color 0.3s ease;
+    /* плавное изменение фона */
+    margin: 0px auto;
+    /* Центрирование меню */
+    max-width: 30%;
+    /* Ширина меню не больше 100% */
+    width: auto;
+    /* Ширина подстраивается под содержимое */
+    display: none;
+    /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* Меню поверх остальных элементов */
+}
+
+.menu.show {
+    display: flex;
+    /* Отображение меню, когда оно активно */
+    flex-direction: row;
+    /* Горизонтальное расположение элементов */
+    justify-content: space-;
+    /* Равномерное распределение элементов */
+    padding: 10px 0;
+    /* Добавление отступов по вертикали */
+    max-width: 100%;
+    /* Ширина меню не больше 100% */
+    width: auto;
+    /* Ширина подстраивается под содержимое */
+}
+
+.menu li {
+    margin: 0 20px;
+    /* Уменьшенные отступы между иконками */
+    margin-right: 10px;
+    text-align: center;
+    flex-grow: 1;
+    /* Равномерное распределение свободного пространства */
+    flex-basis: 0;
+    /* Устанавливаем начальную ширину в 0 */
+    text-align: center;
+    /* Центрируем текст внутри каждого элемента */
+}
+
+.menu a {
+    text-decoration: none;
+    color: #00A19B;
+    font-size: 1rem;
+    /* Меньше шрифт */
+    display: block;
+    padding: 5px 10px;
+    /* Меньше внутренние отступы */
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
+    /* Сглаживание углов на кнопке */
+}
+
+.menu .material-icons {
+    font-size: 1rem;
+    /* Меньше размер иконок */
+    margin-bottom: 3px;
+    /* Меньше расстояние между иконкой и текстом */
+    transition: color 0.3s;
+}
+
+.menu-text {
+    display: block;
+    font-size: 0.9rem;
+    /* Меньше шрифт текста */
+    margin-top: 3px;
+    /* Меньше отступ сверху у текста */
+}
+
+/* Эффект при наведении */
+.menu a:hover .material-icons {
+    color: #000;
+}
+
+.menu a:hover .menu-text {
+    color: #000;
+}
+
+.menu a:hover {
+    background-color: #f0f8ff;
+    /* Легкий фон при наведении */
+
+}
+
+.logo {
+    margin-left: 30px;
+    /* Отступ логотипа от левого края */
+    flex-shrink: 0;
+    /* Логотип не будет сжиматься */
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.logo-img {
+    max-height: 40px;
+    padding-top: 5px;
+    margin-right: 20px;
+    /* Отступ справа от логотипа */
+
+}
+
+/* Мобильная версия */
+
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+        /* Показываем бургер-меню на мобильных */
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 0.6rem;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        /* Скрыто по умолчанию на мобильных */
+    }
+
+    .menu.show {
+        display: flex;
+        /* Показываем меню, если класс 'show' добавлен */
+        flex-direction: row;
+        /* Горизонтальное расположение элементов */
+        justify-content: space-between;
+        /* Разделение элементов по краям */
+        max-width: 80%;
+        /* Ширина меню не больше 100% */
+        width: auto;
+        /* Ширина подстраивается под содержимое */
+    }
+
+    .menu li {
+
+        flex-grow: 1;
+        /* Каждый элемент растягивается, заполняя доступное пространство */
+        text-align: center;
+        /* Центрируем текст внутри каждого элемента */
+        margin: 0;
+        /* Убираем лишние отступы */
+        text-align: center;
+        /* Центрируем текст внутри каждого элемента */
+    }
+
+    .logo-img {
+        max-height: 30px;
+        /* Уменьшаем логотип в мобильном меню */
+        align-items: center;
+    }
+
+    .menu {
+        padding-left: 10px;
+        /* Добавляем отступы для аккуратного вида */
+    }
+}
+
+
+/* Скрытие бургер-меню на десктопе */
+@media (min-width: 769px) {
+    .burger-menu {
+        display: none;
+        /* Скрыть бургер-меню на десктопах */
+    }
+
+    .menu {
+        display: flex;
+        /* Показываем меню в десктопной версии */
+        flex-direction: row;
+        /* Горизонтальное расположение элементов */
+        max-width: 30%;
+        /* Ширина меню не больше 100% */
+        width: auto;
+        /* Ширина подстраивается под содержимое */
+    }
+
+    .menu li {
+        margin: 0 20px;
+        flex-grow: 1;
+        /* Каждый элемент растягивается, заполняя доступное пространство */
+        text-align: center;
+        /* Центрируем текст внутри каждого элемента */
+        margin: 0;
+        /* Убираем лишние отступы */
+        text-align: center;
+        /* Центрируем текст внутри каждого элемента */
+    }
+}
+
+/* Main Section */
+.main-section {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    background: url('background.jpg') no-repeat center center/cover;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h1,
+h2 {
+    margin: 0 0 20px 0;
+}
+
+h1 span {
+    color: #1db49a;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.content-left,
+.contact-form-wrapper {
+    width: 100%;
+    max-width: 600px;
+}
+
+.content-left ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.content-left {
+    text-align: center;
+    /* Центрирование текста внутри контейнера */
+}
+
+.subtitle {
+    display: block;
+    /* Убедиться, что span ведет себя как блок */
+    font-size: 24px;
+    /* Размер текста для субтитров */
+    font-weight: bold;
+    /* Жирный шрифт */
+    color: #1db49a;
+    /* Цвет текста */
+    margin-top: 10px;
+    /* Отступ сверху */
+}
+
+.services-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.material-icons {
+    color: #1db49a;
+}
+
+/* Form */
+.contact-form-wrapper {
+    width: 100%;
+    padding: 20px;
+    background-color: #e6f3ff;
+    border: 2px solid #a7d5ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-form-wrapper h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    height: 80px;
+    resize: none;
+}
+
+.contact-form .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #26d2b4;
+    border: thin solid #000;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form .btn-submit:hover {
+    background-color: #1db49a;
+}
+
+.contact-form button {
+    background-color: #1db49a;
+    color: white;
+    padding: 10px 20px;
+    border: thin solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #148874;
+}
+
+/* Адаптация под планшеты */
+@media (min-width: 768px) {
+    .main-section {
+        flex-direction: row;
+        /* Изменено на row для горизонтального расположения */
+        justify-content: center;
+        align-items: flex-start;
+        /* Изменено на flex-start для выравнивания по верхнему краю */
+    }
+
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        /* Изменено на flex-start для выравнивания по верхнему краю */
+        gap: 40px;
+    }
+
+    .content-left,
+    .contact-form-wrapper {
+        width: 48%;
+        max-width: none;
+    }
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 767px) {
+    .content-left ul {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-wrapper {
+        width: 100%;
+    }
+}
+
+#services {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Сетка для карточек: 3 в ряд на десктопах */
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+.service-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 280px;
+    padding: 15px;
+    text-align: center;
+}
+
+.service-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+}
+
+.service-card p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.service-card .price {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.service-card button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.service-card button:hover {
+    background-color: #0056b3;
+}
+
+/* Адаптивность для планшетов: 2 карточки в ряд */
+@media (max-width: 992px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Адаптивность для мобильных устройств: 1 карточка в ряд */
+@media (max-width: 576px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        max-width: 100%;
+    }
+}
+
+/* Блок О нас */
+#about {
+    background-color: #fff;
+    /* светло-серый фон */
+    padding: 40px 20px;
+    /* отступы для блока */
+    text-align: center;
+    /* выравнивание текста по центру */
+}
+
+.about-container {
+    max-width: 900px;
+    /* ограничение максимальной ширины */
+    margin: 0 auto;
+    /* выравнивание блока по центру */
+}
+
+.about-title {
+    font-size: 2rem;
+    /* размер шрифта для заголовка */
+    color: #333;
+    /* темный текст */
+    margin-bottom: 20px;
+    /* отступ снизу */
+    font-weight: 600;
+    /* жирный шрифт */
+}
+
+.about-description {
+    font-size: 1.125rem;
+    /* размер шрифта для описания */
+    color: #666;
+    /* серый текст */
+    line-height: 1.6;
+    /* межстрочный интервал */
+    max-width: 750px;
+    /* максимальная ширина текста */
+    margin: 0 auto;
+    /* выравнивание текста по центру */
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 30px 15px;
+        /* уменьшенные отступы на мобильных устройствах */
+    }
+
+    .about-title {
+        font-size: 1.5rem;
+        /* уменьшенный размер заголовка на мобильных */
+    }
+
+    .about-description {
+        font-size: 1rem;
+        /* уменьшенный размер текста */
+    }
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+form button {
+    padding: 10px;
+    background-color: #1db49a;;;
+    color: #fff;
+    border: thin solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #03aca7;;
+}
+
+
+/* Стили для футера */
+footer {
+    background-color: #333;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    /* Отступ между иконками и текстом */
+}
+
+.footer-social-icons {
+    display: flex;
+    margin: 0 5px 10px 5px;
+    /* Увеличен нижний отступ */
+    justify-content: center;
+    gap: 10px;
+    /* Отступ между иконками */
+}
+
+/* Иконки в футере */
+.footer-social-icons a {
+    color: #fff;
+    background: #009F9A;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-family: fontawesome;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding-top: 12px;
+    margin: 0 5px;
+    transition: all 0.5s;
+    -webkit-font-smoothing: antialiased;
+}
+
+.footer-social-icons a:hover {
+    background: #ef92a3;
+}
+
+/* Всплывающий текст */
+.footer-social-icons a span {
+    color: #666;
+    position: absolute;
+    font-family: sans-serif;
+    bottom: 0;
+    left: -25px;
+    right: -25px;
+    padding: 5px 7px;
+    z-index: 10;
+    font-size: 14px;
+    border-radius: 2px;
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Стрелка под текстом */
+.footer-social-icons a span:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    position: absolute;
+    bottom: -5px;
+    left: 40px;
+}
+
+/* Появление текста при наведении */
+.footer-social-icons a:hover span {
+    bottom: 50px;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Иконки для каждой социальной сети */
+.footer-social-icons a:nth-of-type(1):before {
+    content: '\f09a';
+    /* Facebook */
+}
+
+.footer-social-icons a:nth-of-type(2):before {
+    content: '\f099';
+    /* Twitter */
+}
+
+.footer-social-icons a:nth-of-type(3):before {
+    content: '\f0d5';
+    /* Google+ */
+}
+
+.footer-social-icons a:nth-of-type(4):before {
+    content: '\f113';
+    /* Github */
+}
+
+.footer-social-icons a:nth-of-type(5):before {
+    content: '\f17d';
+    /* Dribbble */
+}
+
+.footer-social-icons a:nth-of-type(6):before {
+    content: '\f1cb';
+    /* CodePen */
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }

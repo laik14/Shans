@@ -1,62 +1,193 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наркологическая клиника Шанс</title>
+    <title>Наркологический центр Шанс Есть</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Наркологическая клиника Шанс</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-        <button class="contact-button" onclick="sendEmail()">Написать</button>
-        <p>Получите профессиональную помощь прямо сейчас!</p>
+    <!-- Menu -->
+    <nav>
+        <ul class="menu">
+            <span class="logo">
+                <img src="https://i.postimg.cc/3rvnKjyD/Mask-group.png" alt="Logo" class="logo-img">
+            </span>
+            <li><a href="#services">
+                    <span class="material-icons">work_outline</span>
+                    <span class="menu-text">Услуги</span>
+                </a></li>
+            <li><a href="#about">
+                    <span class="material-icons">info</span>
+                    <span class="menu-text">О нас</span>
+                </a></li>
+            <li><a href="#contact">
+                    <span class="material-icons">contact_mail</span>
+                    <span class="menu-text">Контакты</span>
+                </a></li>
+        </ul>
+
+        <div class="burger-menu">
+            <span class="material-icons">menu</span>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="h-container">
+            <div class="logo">Шанс Есть</div>
+            <div class="header-buttons">
+                <button class="btn" onclick="openContactForm()">Записаться на прием</button>
+            </div>
+        </div>
+        </div>
     </header>
-    <main>
-        <section id="about">
-            <h2>О нас</h2>
-            <p>Добро пожаловать в нашу наркологическую клинику. Мы предлагаем профессиональную помощь в лечении зависимостей.</p>
-        </section>
-        <section id="services">
-            <h2>Услуги</h2>
-            <ul>
-                <li>Консультации</li>
-                <li>Детоксикация</li>
-                <li>Реабилитация</li>
-            </ul>
-        </section>
-    </main>
+
+    <!-- Main Section -->
+    <section class="main-section">
+        <div class="container">
+            <div class="content-left">
+                <h1>НАРКОЛОГИЧЕСКАЯ КЛИНИКА</h1>
+                <span class="subtitle">Шанс Есть</span><br></br>
+                <p>Мы верим, что каждый заслуживает шанс на здоровье и счастливую жизнь!</p>
+                <br></br>
+                <ul class="services-list">
+                    <li><span class="material-icons">check_circle</span> Вывод из запоя</li>
+                    <li><span class="material-icons">check_circle</span> Круглосуточный стационар</li>
+                    <li><span class="material-icons">check_circle</span> Оперативный выезд</li>
+                    <li><span class="material-icons">check_circle</span> Кодирование от алкоголизма</li>
+                    <li><span class="material-icons">check_circle</span> Реабилитация</li>
+                    <li><span class="material-icons">check_circle</span> Гарантии при срыве</li>
+                </ul>
+            </div>
+            <div class="contact-form-wrapper">
+                <h2>Сделайте первый шаг к выздоровлению</h2>
+                <form class="contact-form" id="contactForm" action="send_mail.php" method="POST">
+                    <input type="text" name="name" placeholder="Имя" required>
+                    <input type="tel" name="phone" placeholder="Телефон" required>
+                    <textarea name="message" placeholder="Опишите проблему" required></textarea>
+                    <button type="submit" class="btn-submit">Оставить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Наши услуги</h2>
+        <div class="services">
+
+            <!-- Карточка услуги 1 -->
+            <div class="service-card">
+                <img src="images/service1.jpg" alt="Услуга 1">
+                <h3>Консультация нарколога</h3>
+                <p>Профессиональная консультация опытного врача.</p>
+                <p class="price">Цена: 3 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+            <!-- Карточка услуги 2 -->
+            <div class="service-card">
+                <img src="images/service2.jpg" alt="Услуга 2">
+                <h3>Кодирование от алкоголизма</h3>
+                <p>Эффективные методы кодирования на длительный срок.</p>
+                <p class="price">Цена: 10 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+            <!-- Карточка услуги 3 -->
+            <div class="service-card">
+                <img src="images/service3.jpg" alt="Услуга 3">
+                <h3>Вывод из запоя</h3>
+                <p>Безопасный вывод из запоя на дому и в клинике.</p>
+                <p class="price">Цена: 8 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+            <!-- Карточка услуги 4 -->
+            <div class="service-card">
+                <img src="images/service4.jpg" alt="Услуга 4">
+                <h3>Реабилитация</h3>
+                <p>Полный курс реабилитации с психологической поддержкой.</p>
+                <p class="price">Цена: от 50 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+            <!-- Карточка услуги 5 -->
+            <div class="service-card">
+                <img src="images/service5.jpg" alt="Услуга 5">
+                <h3>Снятие ломки</h3>
+                <p>Помощь в снятии ломки с использованием современных препаратов.</p>
+                <p class="price">Цена: 15 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+            <!-- Карточка услуги 6 -->
+            <div class="service-card">
+                <img src="images/service6.jpg" alt="Услуга 6">
+                <h3>Психологическая поддержка</h3>
+                <p>Работа с психологом для устойчивой ремиссии.</p>
+                <p class="price">Цена: 5 000 руб.</p>
+                <button onclick="openContactForm()">Подробнее</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>О нас</h2>
+        <p>Заглушка для информации о центре.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Контакты</h2>
+        <div class="contact-info">
+            <div class="contact-details">
+                <p>Адрес 1</p>
+                <p>Адрес 2</p>
+                <p>Телефон: +7 123 456 7890</p>
+            </div>
+            <div class="map">
+                <!-- Яндекс карта - заглушка -->
+                <img src="yandex_map_placeholder.jpg" alt="Карта">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <section id="contact">
-            <h2>Контакты</h2>
-            <p>Адрес: ул. Примерная, д. 1, г. Москва</p>
-            <p>Телефон: +7 (123) 456-78-90</p>
-            <p>Email: info@shansclinic.ru</p>
-        </section>
+        <div class="footer-social-icons">
+            <a href="#"><span>Google+</span></a>
+            <a href="#"><span>Github</span></a>
+            <a href="#"><span>Dribbble</span></a>
+            <a href="#"><span>CodePen</span></a>
+        </div>
+        <p>Наркологический центр "Шанс Есть" | Телефон: +7 917 456 7890</p>
     </footer>
-    <script>
-        function sendEmail() {
-            fetch('sendmail.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    'email': 'info@shansclinic.ru',
-                    'message': 'Получите профессиональную помощь прямо сейчас!'
-                })
-            })
-            .then(response => response.text())
-            .then(result => alert(result))
-            .catch(error => alert('Ошибка при отправке сообщения.'));
-        }
-    </script>
-</body>
+
+
+    <!-- Modal Contact Form -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeContactForm()">&times;</span>
+            <h2>Контактная форма</h2>
+            <form>
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+   </body>
+
 </html>
