@@ -15,17 +15,10 @@ window.onclick = function(event) {
     }
 };
 
-
-    // Получаем элементы бургер-меню и меню
-var burgerMenu = document.querySelector('.burger-menu');
-var menu = document.querySelector('.menu');
-
-// Добавляем обработчик клика по бургер-меню
-burgerMenu.addEventListener('click', function() {
-    // Переключаем класс 'show' у меню для отображения/скрытия
-    menu.classList.toggle('show');
-});
-
+// Функция прокрутки вверх страницы
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.menu');
@@ -36,6 +29,27 @@ window.addEventListener('scroll', () => {
     }
 });
 
+ymaps.ready(init);
+
+function init() {
+    // Инициализация карты
+    var myMap = new ymaps.Map("yandex-map", {
+        center: [53.256792, 34.313202], // Координаты вашего места
+        zoom: 16, // Масштаб
+        controls: ['zoomControl', 'fullscreenControl'] // Элементы управления
+    });
+
+    // Создаем метку с названием организации
+    var myPlacemark = new ymaps.Placemark([53.256792, 34.313202], {
+        hintContent: 'Шанс Есть' // Текст, который появляется при наведении
+    });
+
+    // Добавляем метку на карту
+    myMap.geoObjects.add(myPlacemark);
+
+    // Открываем балун с названием организации при загрузке карты
+    myPlacemark.balloon.open();
+}
 
 
 

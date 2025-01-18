@@ -98,7 +98,7 @@ body {
     .header-buttons .btn {
         margin-left: 40px;
         /* Сдвигаем кнопку левее */
-        margin-right: 0;
+        margin-right: 40px;
         /* Убрано для корректного отображения */
         padding: 10px;
         border-radius: 50%;
@@ -120,13 +120,60 @@ body {
     }
 
     .burger-menu {
-        right: 10px;
-        /* Сдвигаем бургер-меню */
+        display: none;
+        /* Скрываем бургер-меню на мобильных */
+    }
+
+    .header {
+        display: none;
+        /* Скрываем header на мобильных */
+    }
+
+    .menu {
+        display: none;
+        /* Скрываем меню по умолчанию на мобильных */
     }
 
     .menu.show {
-        max-width: 100%;
-        /* Исправлено на 100% для корректного отображения */
+        display: flex;
+        /* Показываем меню, если класс 'show' добавлен */
+        flex-direction: column;
+        /* Вертикальное расположение элементов */
+        justify-content: center;
+        /* Центрируем элементы */
+        align-items: center;
+        /* Центрируем элементы */
+        width: 100%;
+        /* Ширина меню 100% */
+    }
+
+    .menu li {
+        margin: 10px 0;
+        /* Отступы между элементами меню */
+    }
+
+    .logo-img {
+        max-height: 30px;
+        /* Уменьшаем логотип в мобильном меню */
+        align-items: center;
+    }
+
+    .menu {
+        padding-left: 10px;
+        /* Добавляем отступы для аккуратного вида */
+    }
+
+    .header-buttons .old-button {
+        display: none;
+    }
+
+    /* Скрыть старую кнопку на мобильных устройствах */
+    .header-buttons .btn {
+        display: none;
+    }
+
+    .header-buttons .mobile-icon-button {
+        display: inline-block;
     }
 }
 
@@ -296,13 +343,47 @@ nav {
 /* Мобильная версия */
 @media (max-width: 768px) {
     .burger-menu {
-        display: block;
-        /* Показываем бургер-меню на мобильных */
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        font-size: 0.6rem;
-        cursor: pointer;
+        display: none;
+        /* Скрываем бургер-меню на мобильных */
+    }
+
+    .header {
+        display: none;
+        /* Скрываем header на мобильных */
+    }
+
+    .menu {
+        display: none;
+        /* Скрываем меню по умолчанию на мобильных */
+    }
+
+    .menu.show {
+        display: flex;
+        /* Показываем меню, если класс 'show' добавлен */
+        flex-direction: row;
+        /* Вертикальное расположение элементов */
+        justify-content: center;
+        /* Центрируем элементы */
+        align-items: center;
+        /* Центрируем элементы */
+        width: 100%;
+        /* Ширина меню 100% */
+    }
+
+    .menu li {
+        margin: 10px 0;
+        /* Отступы между элементами меню */
+    }
+
+    .logo-img {
+        max-height: 30px;
+        /* Уменьшаем логотип в мобильном меню */
+        align-items: center;
+    }
+
+    .menu {
+        padding-left: 10px;
+        /* Добавляем отступы для аккуратного вида */
     }
 
     .menu {
@@ -310,7 +391,7 @@ nav {
         /* Скрыто по умолчанию на мобильных */
     }
 
-    .menu.show {
+    .menu {
         display: flex;
         /* Показываем меню, если класс 'show' добавлен */
         flex-direction: row;
@@ -336,7 +417,7 @@ nav {
     }
 
     .logo-img {
-        max-height: 30px;
+        max-height: 40px;
         /* Уменьшаем логотип в мобильном меню */
         align-items: center;
     }
@@ -344,6 +425,10 @@ nav {
     .menu {
         padding-left: 10px;
         /* Добавляем отступы для аккуратного вида */
+    }
+
+    .header-buttons .mobile-icon-button {
+        display: inline-block;
     }
 }
 
@@ -759,7 +844,6 @@ form button:hover {
     background-color: #03aca7;;
 }
 
-
 /* Стили для футера */
 footer {
     background-color: #333;
@@ -879,4 +963,83 @@ footer {
 footer p {
     margin: 0;
     font-size: 14px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    /* Отступ между колонками */
+}
+
+.contact-details {
+    flex: 1;
+    /* Занимает 40% ширины */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    /* Центрируем элементы внутри колонки */
+}
+
+#yandex-map {
+    flex: 2;
+    /* Занимает 60% ширины */
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Центрируем карту внутри колонки */
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Центрируем элементы внутри колонки */
+    gap: 10px;
+    /* Отступ между значком и текстом */
+    margin: 20px 0;
+    /* Отступ между строками */
+}
+
+.contact-details i {
+    color: #1db49a;
+    /* Цвет значков */
+    font-size: 20px;
+    /* Размер значков */
+}
+
+#contact h2 {
+    text-align: center;
+    margin-top: 20px;
+    /* Центрируем заголовок h2 */
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-details {
+        width: 100%;
+        order: 1;
+        margin-bottom: 20px;
+    }
+
+    #yandex-map {
+        width: 100%;
+        height: 300px;
+        order: 2;
+        margin: 20px 0;
+    }
 }
