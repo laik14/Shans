@@ -1030,16 +1030,26 @@ footer p {
         align-items: center;
     }
 
-    .contact-details {
-        width: 100%;
-        order: 1;
-        margin-bottom: 20px;
-    }
+   .contact-details {
+       flex: 1;
+       /* Занимает 40% ширины */
+       order: 1;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-top: 0;
+       /* Центрируем элементы внутри колонки */
+   }
 
     #yandex-map {
         width: 100%;
         height: 300px;
         order: 2;
-        margin: 20px 0;
+        margin: 10px 0;
+        margin-bottom: 20px;
+        display: block;
+            min-height: 300px;
+            /* Убедитесь, что у карты всегда есть высота */
+        }
     }
 }

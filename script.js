@@ -29,6 +29,17 @@ window.addEventListener('scroll', () => {
     }
 });
 
+window.addEventListener('resize', function () {
+    if (myMap) {
+        myMap.container.fitToViewport();
+    }
+});
+
+
+
+// Инициализация при загрузке страницы
+window.dispatchEvent(new Event('resize'));
+
 ymaps.ready(init);
 
 function init() {
