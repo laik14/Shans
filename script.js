@@ -1,19 +1,58 @@
-// Открытие модального окна
+// Открыть модальное окно
 function openContactForm() {
-    document.getElementById('contact-modal').style.display = 'flex';
+    document.getElementById("contact-modal").style.display = "block";
+    // Очищаем форму при открытии модального окна
+    document.getElementById("contact-form").reset();
 }
 
-// Закрытие модального окна
+// Закрыть модальное окно
 function closeContactForm() {
-    document.getElementById('contact-modal').style.display = 'none';
+    document.getElementById("contact-modal").style.display = "none";
 }
 
-// Закрытие модального окна при клике вне его
-window.onclick = function(event) {
-    if (event.target == document.getElementById('contact-modal')) {
-        closeContactForm();
-    }
-};
+// Обработка отправки формы
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Отменить стандартную отправку формы
+
+    const form = this;
+    const formData = new FormData(form); // Получаем данные формы
+
+    // Отправка данных через fetch
+    fetch('sendmail.php', {
+        method: 'POST',
+        body: formData // Отправляем данные формы
+    })
+    .then(response => response.text()) // Получаем ответ от sendmail.php
+    .then(data => {
+        alert(data);  // Выводим результат отправки
+        form.reset(); // Очищаем форму после отправки
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
+});
+
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Отменить стандартную отправку формы
+
+    const form = this;
+    const formData = new FormData(form); // Получаем данные формы
+
+    // Отправка данных через fetch
+    fetch('sendmail.php', {
+        method: 'POST',
+        body: formData // Отправляем данные формы
+    })
+    .then(response => response.text()) // Получаем ответ от sendmail.php
+    .then(data => {
+        alert(data);  // Выводим результат отправки
+        form.reset(); // Очищаем форму после отправки
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
+});
 
 // Функция прокрутки вверх страницы
 function scrollToTop() {
