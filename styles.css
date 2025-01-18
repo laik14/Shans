@@ -115,6 +115,7 @@ nav {
     padding: 0px;
     background-color: rgba(255, 255, 255, 0);
     /* фон */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     /* Размытие фона за меню */
     z-index: 10;
@@ -708,9 +709,9 @@ form input {
 
 form button {
     padding: 10px;
-    background-color: #1db49a;;;
+    background-color: #1db49a;
     color: #fff;
-    border: thin solid;
+    border: thin solid ;
     border-radius: 10px;
     cursor: pointer;
 }
