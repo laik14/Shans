@@ -689,12 +689,12 @@ h2 {
 
 .service-card .price {
     font-weight: bold;
-    color: #007bff;
+    color: #1db49a;
     margin-bottom: 10px;
 }
 
 .service-card button {
-    background-color: #007bff;
+    background-color: #1db49a;
     color: white;
     padding: 8px 16px;
     border: none;
@@ -705,7 +705,7 @@ h2 {
 }
 
 .service-card button:hover {
-    background-color: #0056b3;
+    background-color: #1db49a;
 }
 
 /* Адаптивность для планшетов: 2 карточки в ряд */
@@ -849,24 +849,29 @@ footer {
     background-color: #333;
     padding: 20px 0;
     text-align: center;
+    /* Центрирование текста */
     color: #fff;
 }
 
+/* Контейнер для всего контента футера */
 .footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Центрирование всех элементов */
     gap: 30px;
     /* Отступ между иконками и текстом */
 }
 
+/* Стили для блока с иконками */
 .footer-social-icons {
     display: flex;
-    margin: 0 5px 10px 5px;
-    /* Увеличен нижний отступ */
     justify-content: center;
+    /* Центрирование иконок */
     gap: 10px;
     /* Отступ между иконками */
+    margin: 0 5px 10px 5px;
+    /* Отступы вокруг иконок */
 }
 
 /* Иконки в футере */
@@ -887,6 +892,7 @@ footer {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Иконки при наведении */
 .footer-social-icons a:hover {
     background: #ef92a3;
 }
@@ -960,11 +966,34 @@ footer {
     /* CodePen */
 }
 
+/* Стили для текста в футере */
 footer p {
     margin: 0;
     font-size: 14px;
+    text-align: center;
+    /* Дополнительное центрирование текста */
 }
 
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+        word-break: break-word;
+        /* Уменьшение отступов для мобильных */
+    }
+
+    .footer-social-icons {
+        gap: 15px;
+        /* Меньше отступов между иконками на мобильных */
+    }
+
+    footer p {
+        font-size: 12px;
+        word-break: break-word;
+        /* Уменьшение размера шрифта для мобильных */
+    }
+}
+
+/* Contact page*/
 .contact-info {
     display: flex;
     justify-content: space-between;
@@ -987,17 +1016,32 @@ footer p {
     flex: 2;
     /* Занимает 60% ширины */
     width: 100%;
-    height: 400px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        height: 400px;
+        margin: 10px 0;
+        margin-bottom: 20px;
+        display: block;
+        min-height: 300px;
+        /* Убедитесь, что у карты всегда есть высота */
     margin-top: 20px;
     margin-bottom: 30px;
     margin-right: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Центрируем карту внутри колонки */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
+
+/* Внешний файл стилей */
+.myCustomBalloon {
+    text-align: center;
+    padding: 10px;
+    color: #333;
+    font-size: 14px;
+    border-radius: 15px;
+    /* Скругление углов */
+   }
 
 .contact-details p {
     display: flex;
@@ -1042,14 +1086,96 @@ footer p {
    }
 
     #yandex-map {
-        width: 100%;
-        height: 300px;
-        order: 2;
-        margin: 10px 0;
-        margin-bottom: 20px;
+        margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: calc(100% - 20px);
+            order: 2;
+        
         display: block;
-            min-height: 300px;
+        min-height: 300px;
             /* Убедитесь, что у карты всегда есть высота */
+         border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+    
+/* Скрыть кнопку на больших экранах (десктоп) */
+.call-button {
+    display: none;
+}
+
+/* Стили для кнопки звонка */
+@media (max-width: 768px) {
+    .call-button {
+        display: inline-block;
+        text-decoration: none;
+        position: fixed;
+        bottom: 20px;
+        /* Отступ снизу */
+        right: 20px;
+        /* Отступ справа */
+        z-index: 9999;
+        /* Слой, чтобы кнопка была поверх других элементов */
+    }
+
+    .call-button button {
+        width: 60px;
+        /* Размер кнопки */
+        height: 60px;
+        /* Размер кнопки */
+        padding: 0;
+        /* Убираем внутренние отступы */
+        font-size: 28px;
+        /* Размер иконки */
+        background-color: #26d2b4;
+        /* Цвет фона */
+        color: white;
+        /* Цвет текста */
+        border: none;
+        /* Убираем границу */
+        border-radius: 50%;
+        /* Круглая форма */
+        cursor: pointer;
+        /* Курсор в виде руки */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        /* Тень */
+        transition: background-color 0.3s;
+        /* Плавный переход при наведении */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: pulse 1.5s infinite;
+        /* Анимация пульсации */
+    }
+
+    /* Эффект при наведении */
+    .call-button button:hover {
+        background-color: #03aca7;
+        /* Цвет фона при наведении */
+    }
+
+    /* Иконка телефона */
+    .call-button button i {
+        font-size: 24px;
+        /* Размер иконки */
+    }
+
+    /* Анимация пульсации */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            /* Начальный размер */
+        }
+
+        50% {
+            transform: scale(1.1);
+            /* Увеличение размера */
+        }
+
+        100% {
+            transform: scale(1);
+            /* Исходный размер */
         }
     }
 }
