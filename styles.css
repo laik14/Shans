@@ -711,8 +711,8 @@ form button {
     padding: 10px;
     background-color: #1db49a;
     color: #fff;
-    border: thin solid ;
-    border-radius: 10px;
+    border: thin solid #000;
+    border-radius: 5px;
     cursor: pointer;
 }
 
