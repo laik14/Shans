@@ -49,10 +49,20 @@ body {
     cursor: pointer;
     animation: pulse 2s infinite;
     /* Добавлена анимация пульсации */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-buttons .btn:hover {
     background-color: #148874;
+}
+
+.header-buttons .btn::before {
+    content: '\f0e0'; /* FontAwesome иконка сообщения */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px; /* Добавьте отступ, если нужно */
 }
 
 /* Ключевые кадры для анимации пульсации */
@@ -86,8 +96,37 @@ body {
     }
 
     .header-buttons .btn {
-        margin-left: 0;
-        margin-right: 50px;
+        margin-left: 40px;
+        /* Сдвигаем кнопку левее */
+        margin-right: 0;
+        /* Убрано для корректного отображения */
+        padding: 10px;
+        border-radius: 50%;
+        /* Круглая форма */
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        /* Устанавливаем размер иконки */
+        color: #fff;
+    }
+
+    .header-buttons .btn::before {
+        content: '\f0e0'; /* FontAwesome иконка сообщения */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+    }
+
+    .burger-menu {
+        right: 10px;
+        /* Сдвигаем бургер-меню */
+    }
+
+    .menu.show {
+        max-width: 100%;
+        /* Исправлено на 100% для корректного отображения */
     }
 }
 
@@ -278,7 +317,7 @@ nav {
         /* Горизонтальное расположение элементов */
         justify-content: space-between;
         /* Разделение элементов по краям */
-        max-width: 80%;
+        max-width: 100%;
         /* Ширина меню не больше 100% */
         width: auto;
         /* Ширина подстраивается под содержимое */
@@ -320,7 +359,6 @@ nav {
         display: flex;
         /* Показываем меню в десктопной версии */
         flex-direction: row;
-        /* Горизонтальное расположение элементов */
         max-width: 30%;
         /* Ширина меню не больше 100% */
         width: auto;
@@ -600,6 +638,7 @@ h2 {
 
     .service-card {
         max-width: 100%;
+        /* Убедитесь, что карточки услуг занимают всю ширину */
     }
 }
 

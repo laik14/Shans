@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $message = htmlspecialchars($_POST['message']);
     
-    $to = "info@shansclinic.ru";
+    $to = "info@shansclinic.ru, ya@laik14.ru, rv.simakov@gmail.com";
     $subject = "Новое сообщение с сайта";
     $headers = "From: " . $email;
 
