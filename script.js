@@ -1,14 +1,19 @@
-// Открыть модальное окно
+// Открытие модального окна
 function openContactForm() {
-    document.getElementById("contact-modal").style.display = "block";
-    // Очищаем форму при открытии модального окна
-    document.getElementById("contact-form").reset();
+    document.getElementById('contact-modal').style.display = 'flex';
 }
 
-// Закрыть модальное окно
+// Закрытие модального окна
 function closeContactForm() {
-    document.getElementById("contact-modal").style.display = "none";
+    document.getElementById('contact-modal').style.display = 'none';
 }
+
+// Закрытие модального окна при клике вне его
+window.onclick = function(event) {
+    if (event.target == document.getElementById('contact-modal')) {
+        closeContactForm();
+    }
+};
 
 // Обработка отправки формы
 document.getElementById('contact-form').addEventListener('submit', function(e) {
