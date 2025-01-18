@@ -147,7 +147,7 @@
         <div class="contact-info">
             <div class="contact-details">
                 <p><i class="fas fa-map-marker-alt"></i> Адрес 1</p>
-                <p><i class="fas fa-phone-alt"></i> Телефон: +7 123 456 7890</p>
+                <p><i class="fas fa-phone-alt"></i> Телефон: +7(910) 034 5771</p>
                 <p><i class="fas fa-envelope"></i> Email: info@example.com</p>
             </div>
             <div id="yandex-map"
@@ -158,10 +158,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-social-icons">
-            <a href="#"><span>Google+</span></a>
-            <a href="#"><span>Github</span></a>
-            <a href="#"><span>Dribbble</span></a>
-            <a href="#"><span>CodePen</span></a>
+            <a href="https://vk.com/write-218199226"><span>ВКонтакте</span></a>
+            <a href="https://wa.me/79100345771"><span>WhatsApp</span></a>
+            <a href="https://t.me/Shans32"><span>Телеграм</span></a>
+            <a href="шанс-есть.рф"><span>Сайт</span></a>
         </div>
         <p>Наркологический центр "Шанс Есть"</p>
     </footer>
@@ -172,11 +172,13 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeContactForm()">&times;</span>
             <h2>Контактная форма</h2>
-            <form>
+            <form id="contact-form" action="sendmail.php" method="POST">
                 <label for="name">Имя:</label>
                 <input type="text" id="name" name="name" required>
+    
                 <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" name="phone" required>
+    
                 <button type="submit">Отправить</button>
             </form>
         </div>
@@ -187,7 +189,7 @@
 
     <script src="script.js"></script>
 
-    <a href="tel:+79191913626" class="call-button" id="call-button">
+    <a href="tel:+79100345771" class="call-button" id="call-button">
         <button><i class="fas fa-phone-alt"></i></button>
     </a>
        
