@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наркологический центр Шанс Есть</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -64,13 +65,16 @@
             </div>
             <div class="contact-form-wrapper">
                 <h2>Сделайте первый шаг к выздоровлению</h2>
-                <form class="contact-form" id="contactForm" action="send_mail.php" method="POST">
-                    <input type="text" name="name" placeholder="Имя" required>
-                    <input type="tel" name="phone" placeholder="Телефон" required>
+                <form class="contact-form" id="contactForm" action="sendmail.php" method="POST">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+                
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                
                     <textarea name="message" placeholder="Опишите проблему" required></textarea>
-                    <button type="submit" class="btn-submit">Оставить заявку</button>
+                    <button type="submit">Отправить</button>
                 </form>
-
             </div>
         </div>
     </section>
@@ -198,22 +202,24 @@
     </footer>
 
 
-    <!-- Modal Contact Form -->
+    <!-- Модальная форма -->
     <div id="contact-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeContactForm()">&times;</span>
             <h2>Контактная форма</h2>
-            <form id="contact-form" action="sendmail.php" method="POST">
-                <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required>
+            <form id="modal-contact-form" action="sendmail.php" method="POST">
+                <label for="modal-name">Имя:</label>
+                <input type="text" id="modal-name" name="name" placeholder="Введите ваше имя" required>
     
-                <label for="phone">Телефон:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="modal-phone">Телефон:</label>
+                <input type="tel" id="modal-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
     
+                <textarea name="message" placeholder="Опишите проблему" required></textarea>
                 <button type="submit">Отправить</button>
             </form>
         </div>
     </div>
+
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29f70872-93db-4ad6-818c-7c10c2cf7a00"
     type="text/javascript"></script>
