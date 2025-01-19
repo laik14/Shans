@@ -34,8 +34,10 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error('Ошибка:', error);
+        alert('Ошибка при отправке формы. Попробуйте еще раз.');
     });
 });
+
 
 
 document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -128,6 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
             callButton.style.bottom = '20px'; // Возвращаем кнопку к фиксированному положению
         }
     });
+
+    // Убедитесь, что кнопка скрыта на десктопе
+    if (window.innerWidth >= 769) {
+        document.getElementById('call-button').style.display = 'none';
+    }
 });
 
 
