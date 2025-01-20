@@ -14,52 +14,56 @@ window.onclick = function(event) {
         closeContactForm();
     }
 };
+document.addEventListener("DOMContentLoaded", function () {
+    // Функция для добавления маски телефона
+    function applyPhoneMask(inputId) {
+        const inputElement = document.getElementById(inputId);
+        if (inputElement) {
+            Inputmask("+7 (999) 999-99-99", {
+                placeholder: "_"  // Задаем placeholder для маски
+            }).mask(inputElement);
+        }
+    }
 
-// Обработка отправки формы
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Отменить стандартную отправку формы
+    // Функция для валидации формы
+    function validateForm(formId, nameId, phoneId) {
+        const form = document.getElementById(formId);
+        const nameInput = document.getElementById(nameId);
+        const phoneInput = document.getElementById(phoneId);
 
-    const form = this;
-    const formData = new FormData(form); // Получаем данные формы
+        if (form && nameInput && phoneInput) {
+            form.addEventListener("submit", function (e) {
+                const name = nameInput.value.trim();
+                const phone = phoneInput.value.trim();
 
-    // Отправка данных через fetch
-    fetch('sendmail.php', {
-        method: 'POST',
-        body: formData // Отправляем данные формы
-    })
-    .then(response => response.text()) // Получаем ответ от sendmail.php
-    .then(data => {
-        alert(data);  // Выводим результат отправки
-        form.reset(); // Очищаем форму после отправки
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка при отправке формы. Попробуйте еще раз.');
-    });
+                // Проверка, что поля не пустые
+                if (!name || !phone) {
+                    e.preventDefault();
+                    alert("Пожалуйста, заполните все поля.");
+                    return false;
+                }
+
+                // Проверка корректности номера телефона
+                if (!phoneInput.inputmask.isComplete()) {
+                    e.preventDefault();
+                    alert("Введите корректный номер телефона.");
+                    return false;
+                }
+            });
+        }
+    }
+
+    // Применение маски для обеих форм
+    applyPhoneMask("phone");        // Основная форма
+    applyPhoneMask("modal-phone"); // Модальная форма
+
+    // Валидация обеих форм
+    validateForm("contactForm", "name", "phone");             // Основная форма
+    validateForm("modal-contact-form", "modal-name", "modal-phone"); // Модальная форма
 });
 
 
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Отменить стандартную отправку формы
-
-    const form = this;
-    const formData = new FormData(form); // Получаем данные формы
-
-    // Отправка данных через fetch
-    fetch('sendmail.php', {
-        method: 'POST',
-        body: formData // Отправляем данные формы
-    })
-    .then(response => response.text()) // Получаем ответ от sendmail.php
-    .then(data => {
-        alert(data);  // Выводим результат отправки
-        form.reset(); // Очищаем форму после отправки
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-    });
-});
 
 // Функция прокрутки вверх страницы
 function scrollToTop() {
