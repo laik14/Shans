@@ -833,59 +833,99 @@ h2 {
 
 /* Блок О нас */
 #about {
-    background-color: #fff;
-    /* светло-серый фон */
-    padding: 40px 20px;
-    /* отступы для блока */
+    padding: 50px 20px;
     text-align: center;
-    /* выравнивание текста по центру */
+    background-color: #f9f9f9;
 }
 
-.about-container {
-    max-width: 900px;
-    /* ограничение максимальной ширины */
-    margin: 0 auto;
-    /* выравнивание блока по центру */
-}
-
-.about-title {
-    font-size: 2rem;
-    /* размер шрифта для заголовка */
-    color: #333;
-    /* темный текст */
+#about h2 {
+    font-size: 2em;
     margin-bottom: 20px;
-    /* отступ снизу */
-    font-weight: 600;
-    /* жирный шрифт */
+    color: #333;
 }
 
-.about-description {
-    font-size: 1.125rem;
-    /* размер шрифта для описания */
-    color: #666;
-    /* серый текст */
-    line-height: 1.6;
-    /* межстрочный интервал */
-    max-width: 750px;
-    /* максимальная ширина текста */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
     margin: 0 auto;
-    /* выравнивание текста по центру */
 }
 
+.about-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+}
+
+.about-item i {
+    font-size: 40px;
+    color: #26d2b4;
+    flex-shrink: 0;
+    border: 1px solid #26d2b4;
+    /* Добавлена тонкая обводка */
+    border-radius: 50%;
+    /* Круглая форма для иконок */
+    padding: 10px;
+    /* Пространство вокруг иконки */
+    box-sizing: border-box;
+    /* Чтобы обводка не влияла на размер */
+}
+
+.about-item p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Адаптация для экранов до 768px */
 @media (max-width: 768px) {
+    #about h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .about-content {
+        gap: 20px;
+    }
+
+    .about-item i {
+        font-size: 36px;
+        padding: 8px;
+    }
+
+    .about-item p {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+}
+
+/* Адаптация для экранов до 480px */
+@media (max-width: 480px) {
     #about {
-        padding: 30px 15px;
-        /* уменьшенные отступы на мобильных устройствах */
+        padding: 30px 10px;
     }
 
-    .about-title {
-        font-size: 1.5rem;
-        /* уменьшенный размер заголовка на мобильных */
+    #about h2 {
+        font-size: 1.2em;
     }
 
-    .about-description {
-        font-size: 1rem;
-        /* уменьшенный размер текста */
+    .about-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-item i {
+        margin-bottom: 10px;
+        font-size: 32px;
+        padding: 6px;
+    }
+
+    .about-item p {
+        font-size: 0.85em;
     }
 }
 
