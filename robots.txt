@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /sendmail.php
+
+Sitemap: https://шанс-есть.рф/sitemap.xml
