@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "ya@laik14.ru, rv.simakov@gmail.com";
+    $to = "ya@laik14.ru";
     $subject = "Новое сообщение с сайта";
 
     $email_message = "Имя: $name\n";

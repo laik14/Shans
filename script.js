@@ -92,14 +92,14 @@ window.dispatchEvent(new Event('resize'));
 
 ymaps.ready(function () {
     var myMap = new ymaps.Map("yandex-map", {
-        center: [53.256792, 34.313202],
+        center: [53.304533, 34.311386], // Обновленные координаты для Брянск, ул. Молодежная 1
         zoom: 16
     });
 
     // Создаем метку с названием организации
-    var myPlacemark = new ymaps.Placemark([53.256792, 34.313202], {
-        hintContent: 'Шанс Есть',
-        balloonContent: '<div class="myCustomBalloon">Центр "Шанс Есть"</div>' // Добавляем кастомный контент
+    var myPlacemark = new ymaps.Placemark([53.304533, 34.311386], { // Обновленные координаты метки
+        hintContent: 'Возрождение',
+        balloonContent: '<div class="myCustomBalloon">Наркологический центр "Возрождение"</div>'
     });
 
     // Добавляем метку на карту
@@ -111,8 +111,7 @@ ymaps.ready(function () {
     // Обработчик для коррекции позиции балуна на мобильных устройствах
     myPlacemark.balloon.events.add('open', function () {
         if (window.innerWidth <= 768) {
-            // Корректируем позицию балуна на мобильных устройствах, если необходимо
-            myPlacemark.balloon.setPosition([53.256792, 34.313202]);
+            myPlacemark.balloon.setPosition([53.304533, 34.311386]);
         }
     });
 });

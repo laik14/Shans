@@ -1,4 +1,7 @@
 User-agent: *
-Disallow: /sendmail.php
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Allow: /
 
-Sitemap: https://шанс-есть.рф/sitemap.xml
+Sitemap: https://vozrojdenie32.ru/sitemap.xml

@@ -259,6 +259,44 @@ body {
     .header-buttons .mobile-icon-button {
         display: inline-block;
     }
+
+    .social-stick {
+        width: 60px; /* Увеличиваем ширину */
+    }
+
+    .social-stick:hover {
+        width: 200px; /* Расширение при наведении */
+    }
+
+    .social-stick li a {
+        padding: 10px 10px 10px 20px; /* Добавляем отступ для текста */
+        font-size: 14px; /* Увеличиваем размер текста */
+    }
+
+    .social-stick li a span {
+        visibility: visible; /* Показываем текст */
+        opacity: 1;
+        position: static; /* Убираем абсолютное позиционирование */
+        background: none; /* Убираем фон */
+        color: #444; /* Цвет текста */
+        margin-left: 10px; /* Отступ текста от иконки */
+        transition: none; /* Убираем анимацию */
+    }
+
+    .social-stick li a:hover span {
+        color: #000; /* Цвет текста при наведении */
+    }
+
+    .social-stick li a {
+        text-align: center; /* Центрируем текст */
+        padding: 10px; /* Увеличиваем отступы для равномерного размещения */
+        font-size: 14px; /* Увеличиваем размер текста */
+    }
+
+    .social-stick li a span {
+        display: block; /* Убедиться, что текст занимает всю ширину */
+        margin: 0 auto; /* Центрируем текст */
+    }
 }
 
 @media (max-width: 480px) {
